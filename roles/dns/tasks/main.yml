@@ -1,0 +1,41 @@
+---
+- name: install dns-server
+  apt:
+    name: bind9
+    install_recommends: yes
+
+- name: /etc/bind/named.conf.options
+  template:
+    src: named.conf.options.j2
+    dest: /etc/bind/named.conf.options
+    owner: root
+    group: bind
+    mode: '0644'
+  notify: restart dns
+
+- name: /etc/bind/named.conf.local
+  template:
+    src: named.conf.local.j2
+    dest: /etc/bind/named.conf.local
+    owner: root
+    group: bind
+    mode: '0644'
+  notify: restart dns
+
+- name: /var/lib/bind/db.kade3.lab
+  template:
+    src: db.kade3.lab.j2
+    dest: /var/lib/bind/db.kade3.lab
+    owner: root
+    group: bind
+    mode: '0644'
+  notify: restart dns
+
+- name: /var/lib/bind/db.kade3.lab.inv
+  template:
+    src: db.kade3.lab.inv.j2
+    dest: /var/lib/bind/db.kade3.lab.inv
+    owner: root
+    group: bind
+    mode: '0644'
+  notify: restart dns

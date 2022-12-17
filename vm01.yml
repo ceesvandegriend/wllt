@@ -1,0 +1,9 @@
+---
+- hosts: 
+    - vm01.kade3.lab
+  tags: always
+  become: true
+
+  roles:
+    - dns
+    - ntp

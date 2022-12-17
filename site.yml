@@ -1,0 +1,36 @@
+---
+- hosts: all
+  tags: always
+  become: true
+
+  pre_tasks:
+    - name: pre-tasks | update/upgrade package cache
+      tags: always
+      apt:
+        update_cache: yes
+        upgrade: dist
+      changed_when: false
+      when: ansible_distribution == "Debian"
+
+
+- import_playbook: vm01.yml
+
+
+- hosts: all
+  tags: always
+  become: true
+
+  post_tasks:
+    - name: post-tasks | cleanup package cache
+      tags: always
+      apt:
+        autoclean: yes
+      changed_when: false
+      when: ansible_distribution == "Debian"
+
+    - name: post-tasks | autoremove orphan packages
+      tags: always
+      apt:
+        autoremove: yes
+        purge: yes
+      when: ansible_distribution == "Debian"
