@@ -13,7 +13,9 @@
       when: ansible_distribution == "Debian"
 
 
+- import_playbook: pve01.yml
 - import_playbook: vm01.yml
+- import_playbook: vm02.yml
 
 
 - hosts: all

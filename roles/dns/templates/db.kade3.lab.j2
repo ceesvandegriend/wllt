@@ -1,6 +1,10 @@
+;
+; This file is maintained by Ansible.
+;
+
 $TTL    3600
 @       IN      SOA     vm01.kade3.lab. root.kade3.lab. (
-                   2022121702           ; Serial
+                   2022121703           ; Serial
                          3600           ; Refresh [1h]
                           600           ; Retry   [10m]
                         86400           ; Expire  [1d]
@@ -15,3 +19,7 @@ dns     IN      CNAME   vm01
 ntp     IN      CNAME   vm01
 
 pve01   IN      A       192.168.129.8
+
+vm02    IN      A       192.168.129.16
+
+proxy   IN      CNAME   vm02

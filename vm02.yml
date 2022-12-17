@@ -1,0 +1,12 @@
+# Disks:
+#   - sda1: 16 GB on /
+#   - sdb1: 256 GB on /srv
+---
+- hosts: 
+    - vm02.kade3.lab
+  tags: always
+  become: true
+
+  roles:
+    - common
+    - proxy

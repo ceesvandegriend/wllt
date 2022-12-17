@@ -1,0 +1,22 @@
+---
+- name: install squid
+  apt:
+    name: squid
+    install_recommends: yes
+
+- name: /srv/squid
+  file:
+    path: /srv/squid
+    state: directory
+    owner: proxy
+    group: proxy
+    mode: '0775'
+
+- name: /etc/squid/squid.conf
+  template:
+    src: squid.conf.j2
+    dest: /etc/squid/squid.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart proxy
