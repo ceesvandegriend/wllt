@@ -1,0 +1,30 @@
+---
+- name: create group
+  group:
+    name: "{{ admin_user }}"
+    state: present
+
+- name: create user
+  user:
+    name: "{{ admin_user }}"
+    group: "{{ admin_group }}"
+    groups:
+      - adm
+      - sudo
+    append: true
+    state: present
+    shell: /bin/bash
+
+- name: ssh authorized key
+  authorized_key:
+    user: "{{ admin_user }}"
+    key: "{{ admin_ssh_key}}"
+    state: present
+
+- name: /etc/sudoerd.d/adm
+  template:
+    src: sudo_adm.j2
+    dest: /etc/sudoers.d/adm
+    owner: root
+    group: root
+    mode: '0660'

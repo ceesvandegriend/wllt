@@ -1,8 +1,13 @@
 ---
-- name: /etc/apt/apt.conf.d/proxy.conf
+- name: install packages
+  package:
+    name: "{{ common_packages }}"
+
+- name: /etc/apt/apt.conf.d/50proxy.conf
   template:
     src: proxy.conf.j2
-    dest: /etc/apt/apt.conf.d/proxy.conf
+    dest: /etc/apt/apt.conf.d/50proxy.conf
     owner: root
     group: root
     mode: '0644'
+
