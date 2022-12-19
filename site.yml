@@ -11,11 +11,10 @@
         upgrade: dist
       changed_when: false
       when: ansible_distribution == "Debian"
-      ignore_errors: yes 
 
-- import_playbook: pve01.yml
-- import_playbook: vm01.yml
-- import_playbook: vm02.yml
+- import_playbook: pve.yml
+- import_playbook: dns.yml
+- import_playbook: proxy.yml
 
 
 - hosts: all

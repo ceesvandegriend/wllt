@@ -1,9 +1,9 @@
 all:
   hosts:
-    pve01.kade3.lab:
+    pve01.lab.kade3.home:
       ansible_host: 192.168.129.8
-    vm01.kade3.lab:
+    dns01.lab.kade3.home:
       ansible_host: 192.168.129.2
-    vm02.kade3.lab:
+    proxy01.lab.kade3.home:
       ansible_host: 192.168.129.16
 

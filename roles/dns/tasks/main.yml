@@ -22,19 +22,19 @@
     mode: '0644'
   notify: restart dns
 
-- name: /var/lib/bind/db.kade3.lab
+- name: /var/lib/bind/db.lab.kade3.home
   template:
-    src: db.kade3.lab.j2
-    dest: /var/lib/bind/db.kade3.lab
+    src: db.lab.kade3.home.j2
+    dest: /var/lib/bind/db.lab.kade3.home
     owner: root
     group: bind
     mode: '0644'
   notify: restart dns
 
-- name: /var/lib/bind/db.kade3.lab.inv
+- name: /var/lib/bind/db.lab.kade3.home.inv
   template:
-    src: db.kade3.lab.inv.j2
-    dest: /var/lib/bind/db.kade3.lab.inv
+    src: db.lab.kade3.home.inv.j2
+    dest: /var/lib/bind/db.lab.kade3.home.inv
     owner: root
     group: bind
     mode: '0644'

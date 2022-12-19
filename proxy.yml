@@ -1,9 +1,9 @@
 # Disks:
 #   - sda1: 16 GB on /
-#   - sdb1: 256 GB on /srv
+#   - sdb1: 64 GB on /srv
 ---
 - hosts: 
-    - vm02.kade3.lab
+    - proxy01.lab.kade3.home
   tags: always
   become: true
 

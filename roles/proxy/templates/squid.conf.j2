@@ -3647,7 +3647,8 @@ maximum_object_size 8192 MB
 #cache_dir ufs /var/spool/squid 100 16 256
 
 ### CvdG ###
-cache_dir ufs /srv/squid 200000 16 256
+# Size: 55 GB = 56320 MB
+cache_dir ufs /srv/squid 56320 16 256
 
 #  TAG: store_dir_select_algorithm
 #	How Squid selects which cache_dir to use when the response
