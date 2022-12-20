@@ -27,7 +27,7 @@
     group: root
     mode: '0644'
 
-- name: copy checkmk-agent
+- name: copy check-mk-agent
   copy:
     src: check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
     dest: /tmp/check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
@@ -35,6 +35,6 @@
     group: root
     mode: '0644'
 
-- name: install checkmk-agent
+- name: install check-mk-agent
   apt:
     deb: /tmp/check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb

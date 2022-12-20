@@ -1,0 +1,13 @@
+---
+- name: enable pve-no-subscription
+  lineinfile:
+    path: /etc/apt/sources.list
+    line: 'deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription'
+    state: present
+
+- name: disable pve-enterprise
+  lineinfile:
+    path: /etc/apt/sources.list.d/pve-enterprise.list
+    regex: '^deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise'
+    line: '# deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise'
+    state: present
