@@ -1,0 +1,65 @@
+---
+- name: zsh | ~/.zsh.d
+  file:
+    path: "/home/{{ user_user }}/.zsh.d/"
+    state: directory
+    owner: "{{ user_user }}"
+    group: "{{ user_group }}"
+    mode: '0700'
+
+- name: zsh | ~/.zshenv
+  copy:
+    src: zsh/zshenv-home
+    dest: "/home/{{ user_user }}/.zshenv"
+    owner: "{{ user_user }}"
+    group: "{{ user_group }}"
+    mode: '0600'
+
+- name: zsh | ~/.zsh.d/.zshenv
+  copy:
+    src: zsh/zshenv
+    dest: "/home/{{ user_user }}/.zsh.d/.zshenv"
+    owner: "{{ user_user }}"
+    group: "{{ user_group }}"
+    mode: '0600'
+
+- name: zsh | ~/.zsh.d/.zshrc
+  copy:
+    src: zsh/zshrc
+    dest: "/home/{{ user_user }}/.zsh.d/.zshrc"
+    owner: "{{ user_user }}"
+    group: "{{ user_group }}"
+    mode: '0600'
+
+- name: zsh | ~/.zsh.d/.zprofile
+  copy:
+    src: zsh/zprofile
+    dest: "/home/{{ user_user }}/.zsh.d/.zprofile"
+    owner: "{{ user_user }}"
+    group: "{{ user_group }}"
+    mode: '0600'
+
+- name: zsh | ~/.zsh.d/.zlogin
+  copy:
+    src: zsh/zlogin
+    dest: "/home/{{ user_user }}/.zsh.d/.zlogin"
+    owner: "{{ user_user }}"
+    group: "{{ user_group }}"
+    mode: '0600'
+
+- name: zsh | ~/.zsh.d/.zlogout
+  copy:
+    src: zsh/zlogout
+    dest: "/home/{{ user_user }}/.zsh.d/.zlogout"
+    owner: "{{ user_user }}"
+    group: "{{ user_group }}"
+    mode: '0600'
+
+- name: zsh | ~/.zsh.d/ templates
+  copy:
+    src: zsh.d/
+    dest: "/home/{{ user_user }}/.zsh.d/"
+    owner: "{{ user_user }}"
+    group: "{{ user_group }}"
+    mode: '0600'
+  

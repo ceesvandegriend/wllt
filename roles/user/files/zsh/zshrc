@@ -1,0 +1,11 @@
+#
+# This file is managed by Ansible.
+#
+ZSH_DEBUG=${ZSH_DEBUG:=0}
+
+for F in ${ZDOTDIR}/S[0123456789][0123456789]-*.zsh ; do
+  if [ ${ZSH_DEBUG=0} -gt 0 ] ; then
+	  echo "Source: ${F}"
+  fi
+  source ${F}
+done
