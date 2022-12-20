@@ -12,9 +12,11 @@
       changed_when: false
       when: ansible_distribution == "Debian"
 
+
 - import_playbook: pve.yml
 - import_playbook: dns.yml
 - import_playbook: proxy.yml
+- import_playbook: cmk.yml
 
 
 - hosts: all

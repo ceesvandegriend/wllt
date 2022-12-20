@@ -8,4 +8,5 @@ all:
       ansible_host: 192.168.129.2
     proxy01.lab.kade3.home:
       ansible_host: 192.168.129.16
-
+    cmk01.lab.kade3.home:
+      ansible_host: 192.168.129.17

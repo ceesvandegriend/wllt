@@ -3,3 +3,4 @@ common_packages:
   - sudo
   - vim-nox
   - htop
+  - facter

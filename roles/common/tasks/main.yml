@@ -3,6 +3,22 @@
   package:
     name: "{{ common_packages }}"
 
+- name: /etc/hosts
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: /etc/resolv.conf
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: /etc/apt/apt.conf.d/50proxy.conf
   template:
     src: 50proxy.conf.j2
@@ -11,3 +27,14 @@
     group: root
     mode: '0644'
 
+- name: copy checkmk-agent
+  copy:
+    src: check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
+    dest: /tmp/check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: install checkmk-agent
+  apt:
+    deb: /tmp/check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
