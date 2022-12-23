@@ -1,11 +1,9 @@
 ---
 - hosts: all
-  tags: always
   become: true
 
   pre_tasks:
     - name: pre-tasks | update/upgrade package cache
-      tags: always
       apt:
         update_cache: yes
         upgrade: dist
@@ -16,24 +14,22 @@
 - import_playbook: pve.yml
 - import_playbook: dns.yml
 - import_playbook: proxy.yml
+- import_playbook: development.yml
   # - import_playbook: cmk.yml
   # - import_playbook: k8s.yml
 
 
 - hosts: all
-  tags: always
   become: true
 
   post_tasks:
     - name: post-tasks | cleanup package cache
-      tags: always
       apt:
         autoclean: yes
       changed_when: false
       when: ansible_distribution == "Debian"
 
     - name: post-tasks | autoremove orphan packages
-      tags: always
       apt:
         autoremove: yes
         purge: yes
