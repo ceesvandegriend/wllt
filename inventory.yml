@@ -1,12 +1,10 @@
 all:
   hosts:
-    pve01.lab.kade3.home:
-      ansible_host: 192.168.129.8
-    pve02.lab.kade3.home:
-      ansible_host: 192.168.129.9
-    dns01.lab.kade3.home:
-      ansible_host: 192.168.129.2
-    proxy01.lab.kade3.home:
-      ansible_host: 192.168.129.16
-    cmk01.lab.kade3.home:
-      ansible_host: 192.168.129.17
+    pve01.kade3.home:
+    dns01.kade3.home:
+    proxy01.kade3.home:
+
+    pve02.kade3.home:
+      proxmox_ve_laptop: true
+    dns02.kade3.home:
+    dev01.kade3.home:

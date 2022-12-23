@@ -1,0 +1,42 @@
+---
+- name: install packages
+  package:
+    name: "{{ kubernetes_packages }}"
+
+- name: install K8S GPG key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+- name: add K8S repository
+  apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    filename: k8s
+
+- name: install K8S packages
+  apt:
+    name:
+      - kubelet
+      - kubectl
+
+- name: install K8S packages kubeadm
+  apt:
+    name: kubeadm
+  when: "'k8s-c' in inventory_hostname"
+
+- name: /etc/modules-load.d/k8s.conf
+  template:
+    src: k8s.conf.j2
+    dest: /etc/modules-load.d/k8s.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: reboot
+
+- name: /etc/sysctl.d/50-k8s.conf
+  template:
+    src: 50-k8s.conf.j2
+    dest: /etc/sysctl.d/50-k8s.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: reboot

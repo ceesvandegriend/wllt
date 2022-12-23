@@ -29,12 +29,12 @@ zone "31.172.in-addr.arpa"  { type master; file "/etc/bind/db.empty"; };
 
 // zone "168.192.in-addr.arpa" { type master; file "/etc/bind/db.empty"; };
 
-zone "lab.kade3.home" {
+zone "kade3.home" {
     type master;
-    file "/var/lib/bind/db.lab.kade3.home";
+    file "/var/lib/bind/db.kade3.home";
 };
 
 zone "129.168.192.in-addr.arpa" {
     type master;
-    file "/var/lib/bind/db.lab.kade3.home.inv";
+    file "/var/lib/bind/db.129.168.192";
 };

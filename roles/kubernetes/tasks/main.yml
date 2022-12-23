@@ -1,0 +1,56 @@
+---    
+- name: /etc/modules-load.d/k8s.conf
+  template:
+    src: k8s.conf.j2
+    dest: /etc/modules-load.d/k8s.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: reboot
+
+- name: /etc/sysctl.d/50-k8s.conf
+  template:
+    src: 50-k8s.conf.j2
+    dest: /etc/sysctl.d/50-k8s.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: reboot
+
+- name: install containerd
+  package:
+    name: containerd
+
+- name: /etc/cni/net.d/10-containerd-net.conflist
+  template:
+    src: 10-containerd-net.conflist.j2
+    dest: /etc/cni/net.d/10-containerd-net.conflist
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart containerd
+
+- name: /etc/containerd/config.toml
+  template:
+    src: config.toml.j2
+    dest: /etc/containerd/config.toml
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart containerd
+
+- name: install k8s GPG key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+- name: add k8s repository
+  apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    filename: k8s
+
+- name: install K8S packages
+  apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl

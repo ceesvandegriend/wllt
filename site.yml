@@ -16,7 +16,8 @@
 - import_playbook: pve.yml
 - import_playbook: dns.yml
 - import_playbook: proxy.yml
-- import_playbook: cmk.yml
+  # - import_playbook: cmk.yml
+  # - import_playbook: k8s.yml
 
 
 - hosts: all

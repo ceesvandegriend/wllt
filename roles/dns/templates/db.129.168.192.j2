@@ -1,0 +1,25 @@
+;
+; This file is maintained by Ansible.
+;
+
+$TTL    3600
+@       IN      SOA     dns01.kade3.home. root.kade3.home. (
+                   2022122301           ; Serial
+                         3600           ; Refresh [1h]
+                          600           ; Retry   [10m]
+                        86400           ; Expire  [1d]
+                          600 )         ; Negative Cache TTL [1h]
+;
+@       IN      NS      dns01.kade3.home.
+@       IN      NS      dns02.kade3.home.
+
+dns01   IN      A       192.168.129.33
+dns02   IN      A       192.168.129.65
+
+32      IN      PTR     pve01.kade3.home.
+33      IN      PTR     dns01.kade3.home.
+34      IN      PTR     proxy01.kade3.home.
+
+64      IN      PTR     pve02.kade3.home.
+65      IN      PTR     dns02.kade3.home.
+66      IN      PTR     dev01.kade3.home.

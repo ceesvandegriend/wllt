@@ -1,0 +1,4 @@
+---
+- name: install packages
+  package:
+    name: "{{ developement_packages }}"

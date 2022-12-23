@@ -1,0 +1,7 @@
+---
+# See: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+kubernetes_packages:
+  - containerd
+  - apt-transport-https
+  - ca-certificates
+  - curl

@@ -20,3 +20,32 @@
     group: root
     mode: '0644'
   notify: restart proxy
+
+- name: install apache2
+  apt:
+    name: apache2
+    install_recommends: yes
+
+- name: /var/www/html
+  file:
+    path: /var/www/html
+    state: directory
+    owner: root
+    group: root
+    mode: '0775'
+
+- name: /var/www/html/proxy.pac
+  template:
+    src: proxy.pac.j2
+    dest: /var/www/html/proxy.pac
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: /var/www/html/wpad.dat
+  template:
+    src: wpad.dat.j2
+    dest: /var/www/html/wpad.dat
+    owner: root
+    group: root
+    mode: '0644'

@@ -27,14 +27,53 @@
     group: root
     mode: '0644'
 
+- name: /etc/sudoerd.d/adm
+  template:
+    src: adm.j2
+    dest: /etc/sudoers.d/adm
+    owner: root
+    group: root
+    mode: '0660'
+
+- name: create group
+  group:
+    name: "{{ common_user }}"
+    state: present
+
+- name: create user
+  user:
+    name: "{{ common_user }}"
+    group: "{{ common_group }}"
+    groups:
+      - adm
+      - sudo
+    append: true
+    state: present
+    shell: /bin/bash
+
+- name: ssh authorized key
+  authorized_key:
+    user: "{{ common_user }}"
+    key: "{{ common_ssh_key}}"
+    state: present
+
+#
+# CheckMK
+#
 - name: copy check-mk-agent
   copy:
     src: check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
-    dest: /tmp/check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
+    dest: /root/check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
     owner: root
     group: root
     mode: '0644'
 
-- name: install check-mk-agent
+# - name: install check-mk-agent
+#   apt:
+#     deb: /root/check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
+
+- name: remove check-mk-agent
   apt:
-    deb: /tmp/check-mk-agent_2.1.0p18-54338f7ea704dbf1_all.deb
+    name: check-mk-agent
+    state: absent
+    purge: true

@@ -1,10 +1,8 @@
 ---
 - name: install ntpdate
-  apt:
+  package:
     name: ntpdate
-    install_recommends: yes
 
-- name: install ntp-server
-  apt:
+- name: install ntp
+  package:
     name: ntp
-    install_recommends: yes

@@ -1,13 +1,11 @@
 # Disks:
-#   - sda1: 16 GB on /
-#   - sdb1: 64 GB on /srv
+#   - sda1: 64 GB on /
 ---
 - hosts: 
-    - proxy01.lab.kade3.home
+    - proxy01.kade3.home
   tags: always
   become: true
 
   roles:
     - common
-    - user
     - proxy

@@ -1,7 +1,7 @@
 #
 # This file is maintained by Ansible.
 #
-127.0.1.1 {{ ansible_facts['fqdn'] }} {{ ansible_facts['hostname'] }}
+{{ ansible_facts['default_ipv4']['address'] }} {{ ansible_facts['fqdn'] }} {{ ansible_facts['hostname'] }}
 127.0.0.1 localhost
 
 # The following lines are desirable for IPv6 capable hosts

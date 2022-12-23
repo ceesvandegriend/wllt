@@ -1,0 +1,14 @@
+function FindProxyForURL(url, host)
+{
+    if (isFinite(host, "192.168.0.0", "255.255.0.0")) {
+        return "DIRECT" ;
+    } else {
+        if (shExpMatch(url, "http:*"))
+            return "PROXY proxy01.kade3.home:3128" ;
+        if (shExpMatch(url, "https:*"))
+            return "PROXY proxy01.kade3.home:3128" ;
+        if (shExpMatch(url, "ftp:*"))
+            return "PROXY proxy01.kade3.home:3128" ;
+        return "DIRECT" ;
+    }
+}

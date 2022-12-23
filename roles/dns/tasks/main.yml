@@ -1,8 +1,7 @@
 ---
-- name: install dns-server
-  apt:
+- name: install bind9
+  package:
     name: bind9
-    install_recommends: yes
 
 - name: /etc/bind/named.conf.options
   template:
@@ -22,20 +21,22 @@
     mode: '0644'
   notify: restart dns
 
-- name: /var/lib/bind/db.lab.kade3.home
+- name: /var/lib/bind/db.kade3.home
   template:
-    src: db.lab.kade3.home.j2
-    dest: /var/lib/bind/db.lab.kade3.home
+    src: db.kade3.home.j2
+    dest: /var/lib/bind/db.kade3.home
     owner: root
     group: bind
     mode: '0644'
+  tags: dns
   notify: restart dns
 
-- name: /var/lib/bind/db.lab.kade3.home.inv
+- name: /var/lib/bind/db.129.168.192
   template:
-    src: db.lab.kade3.home.inv.j2
-    dest: /var/lib/bind/db.lab.kade3.home.inv
+    src: db.129.168.192.j2
+    dest: /var/lib/bind/db.129.168.192
     owner: root
     group: bind
     mode: '0644'
+  tags: dns
   notify: restart dns

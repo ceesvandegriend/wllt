@@ -11,3 +11,13 @@
     regex: '^deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise'
     line: '# deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise'
     state: present
+
+- name: disable lid close suspend
+  lineinfile:
+    path: /etc/systemd/logind.conf
+    regex: 'HandleLidSwitch'
+    line: 'HandleLidSwitch=ignore'
+    state: present
+  when: proxmox_ve_laptop|default(false)|bool
+  notify: reboot
+  

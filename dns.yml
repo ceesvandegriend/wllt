@@ -1,11 +1,10 @@
 ---
 - hosts: 
-    - dns??.lab.kade3.home
+    - dns??.kade3.home
   tags: always
   become: true
 
   roles:
     - common
-    - user
     - dns
     - ntp
