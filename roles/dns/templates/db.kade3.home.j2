@@ -4,7 +4,7 @@
 
 $TTL    3600
 @       IN      SOA     dns01.kade3.home. root.kade3.home. (
-                   2022122301           ; Serial
+                   2023010201           ; Serial
                          3600           ; Refresh [1h]
                           600           ; Retry   [10m]
                         86400           ; Expire  [1d]
@@ -14,13 +14,16 @@ $TTL    3600
 @        IN      NS      dns02.kade3.lab.
 
 gw       IN      A       192.168.129.1
+dns00    IN      A       192.168.129.2
 
 pve01    IN      A       192.168.129.32
 dns01    IN      A       192.168.129.33
 ntp01    IN      CNAME   dns01
 proxy01  IN      A       192.168.129.34
+swrf01   IN      A       192.168.129.35
 
 pve02    IN      A       192.168.129.64
 dns02    IN      A       192.168.129.65
 ntp02    IN      CNAME   dns02
 dev01    IN      A       192.168.129.66
+dev02    IN      A       192.168.129.67

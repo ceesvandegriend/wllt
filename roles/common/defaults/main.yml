@@ -6,6 +6,7 @@ common_packages:
   - facter
   - gpg
   - kitty-terminfo
+  - tmux
 
 common_user: cees
 common_group: cees

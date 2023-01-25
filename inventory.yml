@@ -1,10 +1,21 @@
 all:
   hosts:
+    # Raspberry Pi 4B
+    dns00.kade3.home:
+
+    # Linux server
     pve01.kade3.home:
+
+    # VMs on pve01
     dns01.kade3.home:
     proxy01.kade3.home:
-
+    swrf01.kade3.home:
+    
+    # Linux laptop
     pve02.kade3.home:
       proxmox_ve_laptop: true
+
+    # VMs on pve02
     dns02.kade3.home:
     dev01.kade3.home:
+    dev02.kade3.home:

@@ -2,7 +2,8 @@
 - name: install bind9
   package:
     name: bind9
-
+  when: 
+  
 - name: /etc/bind/named.conf.options
   template:
     src: named.conf.options.j2

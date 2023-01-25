@@ -2,3 +2,22 @@
 - name: install packages
   package:
     name: "{{ developement_packages }}"
+
+#
+# loginctl enable-linger ${USER}
+#
+# - name: /var/lib/systemd/linger
+#   file:
+#     name: /var/lib/systemd/linger
+#     state: directory
+#     owner: root
+#     group: root
+#     mode: '0755'
+
+# - name: /var/lib/systemd/linger/USER
+#   file:
+#     name: "/var/lib/systemd/linger/{{ development_user }}"
+#     state: touch
+#     owner: root
+#     group: root
+#     mode: '0644'

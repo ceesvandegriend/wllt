@@ -5,5 +5,11 @@
 
   roles:
     - common
+
+- hosts: 
+    - dns??.kade3.home:!dns00.kade3.home
+  become: true
+
+  roles:
     - dns
     - ntp

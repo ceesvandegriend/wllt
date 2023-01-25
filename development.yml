@@ -1,6 +1,7 @@
 ---
 - hosts: 
     - dev??.kade3.home
+    - swrf??.kade3.home
   become: true
 
   roles:
