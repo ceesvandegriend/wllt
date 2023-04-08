@@ -8,10 +8,9 @@ function FindProxyForURL(url, host) {
     var LocalSubnet     = "192.168.0.0";   //The network address for your local IP
     var LocalSubnetMask = "255.255.0.0;    //Subnet mask for your local network
     //set up a list of urls you want direct access to. you can use regular expressions.
-    //var DirectHosts = [
-    //    "*.microsoft.com*",
-    //    "*.facebook.com*"
-    //];
+    var DirectHosts = [
+        "*.kade3.home*",
+    ];
     //Checks if the request is for a FTP site. Use the FTPProxy setting if so.
     if (url.substring(0,3)=="ftp") {
         return FTPProxy;
@@ -26,11 +25,11 @@ function FindProxyForURL(url, host) {
         return "DIRECT";
     }
     //Check all the enteries in the DirectHosts array.
-    //for (var i in DirectHosts) {
-    //    if (shExpMatch(host, DirectHosts[i])) {
-    //        return "DIRECT";
-    //    }
-    //}
+    for (var i in DirectHosts) {
+        if (shExpMatch(host, DirectHosts[i])) {
+            return "DIRECT";
+        }
+    }
     //use the default proxy specified at the top as ProxyServer.
     return ProxyServer;
 }
